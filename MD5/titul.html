@@ -1,0 +1,48 @@
+﻿<html>
+	<head>
+		<script type="text/javascript" src="jquery.js">
+		</script>
+		<script type="text/javascript">
+		$( document ).ready(function() {
+			console.log( "ready!" );
+			$( "#cryptButton" ).on( "click", function() {
+			var data = {'string': $('#textField')[0].value};
+			console.log('-=data=-', data);
+			
+				  $.ajax({
+				   type: "POST",
+				   data: data,
+				  url: 'http://localhost/index.php',
+				  success: function(xhr){
+				  console.log('-=xhr=-', xhr);
+				  $('#result').text(xhr);
+				  },
+				});
+		});
+});
+		</script>
+	</head>
+	<body>
+		<div>
+			Лаборторная работа №2
+			</br>На тему: Создание алгоритма MD5
+		</div>
+		<div>
+			<form>
+				<input id="textField">
+					
+				</input>
+			</form>
+			<button id="cryptButton">
+				Зашифровать и добавить в БД
+			</button>
+		</div>
+		<div>
+		<p>
+			Результат:
+			</p>
+			<span id="result">
+			</span>
+		</div>
+	</body>
+</html>
